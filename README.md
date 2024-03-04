@@ -24,7 +24,7 @@ You can bind folders and files from the host system into the containers.
 
 
 ## Additional Credits
-- @lionkor for the `entrypoint.sh`
+- [lionkor](https://github.com/lionkor) for the `entrypoint.sh`
 
 
 ## Todo
