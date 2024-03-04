@@ -1,0 +1,48 @@
+services:
+  beammp_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Define what you need
+    container_name: "beammp.name" # define name
+    ports:
+      - "30814:30814"             # Define port - Outside:Inside - You only want to touch the Outside port
+    network_mode: bridge
+    restart: unless-stopped
+    environment:                  # define settings
+      BEAMMP_DEBUG: false
+      BEAMMP_PRIVATE: true
+      BEAMMP_MAX_CARS: 1
+      BEAMMP_MAX_PLAYERS: 8
+      BEAMMP_MAP: "/levels/derby/info.json"
+      BEAMMP_NAME: "My BeamMP Server Name"
+      BEAMMP_DESCRIPTION: "My BeamMP Server Description"
+      # BEAMMP_TAGS: "" # Unused so far
+      BEAMMP_AUTH_KEY: ""
+      BEAMMP_LOG_CHAT: true
+
+    # You only need to define these if you intend to have your scripts and mods outside of the docker
+    # and if you want servers to be able to communicate with each other through the file system
+    volumes:
+      #- "/path/to/FolderOrFile:/path/to/FolerOrFile"
+      # examples
+      #- "/home/beammp/resources/common/client:/Client" # makes all common client mods available
+      #- "/home/beammp/resources/common/server:/Server" # makes all common server scripts available
+      #- "/home/beammp/resources/maps/ks_nord.zip:/beammp/Resources/Client/ks_nord.zip" # makes a specific map available as a client mod
+      #- "/home/beammp/resources/sim-racing/client:/Client" # makes all sim racing mods available
+      #- "/home/beammp/resources/sim-racing/server:/Server" # makes all sim racing server scripts available
+
+    # no touchy touchy
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: nc -z localhost 30814 || exit 1
+      interval: 10s
+      retries: 3
+      start_period: 10s
+      timeout: 5s
