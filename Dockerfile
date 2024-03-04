@@ -1,5 +1,5 @@
 FROM archlinux:base
-RUN ["pacman","-Sy","--noconfirm","netcat","curl","wget"]
+RUN ["pacman","-Syu","--noconfirm","netcat","curl","wget"]
 
 # IMPORTANT
 # you have to define a lua version that the beammp server has been build with.

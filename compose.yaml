@@ -2,15 +2,14 @@ services:
   beammp_server:
     build:
       context: .
-      dockerfile: Dockerfile
 
     # Define what you need
-    container_name: "beammp.name" # define name
+    container_name: "beammp.name" # define name of the container
     ports:
       - "30814:30814"             # Define port - Outside:Inside - You only want to touch the Outside port
     network_mode: bridge
     restart: unless-stopped
-    environment:                  # define settings
+    environment:                  # define the server config
       BEAMMP_DEBUG: false
       BEAMMP_PRIVATE: true
       BEAMMP_MAX_CARS: 1
@@ -24,7 +23,7 @@ services:
 
     # You only need to define these if you intend to have your scripts and mods outside of the docker
     # and if you want servers to be able to communicate with each other through the file system
-    volumes:
+    #volumes:
       #- "/path/to/FolderOrFile:/path/to/FolerOrFile"
       # examples
       #- "/home/beammp/resources/common/client:/Client" # makes all common client mods available
