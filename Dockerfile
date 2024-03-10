@@ -14,5 +14,7 @@ RUN ln -s /usr/lib64/liblua.so.5.3.6 /usr/lib64/liblua5.3.so.0
 
 COPY ./beammp /beammp/
 COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /beammp/BeamMP-Server
+RUN chmod +x /entrypoint.sh
 WORKDIR /beammp
 ENTRYPOINT ["/entrypoint.sh"]
