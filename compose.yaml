@@ -26,11 +26,11 @@ services:
     #volumes:
       #- "/path/to/FolderOrFile:/path/to/FolerOrFile"
       # examples
-      #- "/home/beammp/resources/common/client:/Client" # makes all common client mods available
-      #- "/home/beammp/resources/common/server:/Server" # makes all common server scripts available
+      #- "/home/beammp/resources/common/client:/Client/common" # makes all common client mods available
+      #- "/home/beammp/resources/common/server:/Server/common" # makes all common server scripts available
       #- "/home/beammp/resources/maps/ks_nord.zip:/beammp/Resources/Client/ks_nord.zip" # makes a specific map available as a client mod
-      #- "/home/beammp/resources/sim-racing/client:/Client" # makes all sim racing mods available
-      #- "/home/beammp/resources/sim-racing/server:/Server" # makes all sim racing server scripts available
+      #- "/home/beammp/resources/sim-racing/client:/Client/sim-racing" # makes all sim racing mods available
+      #- "/home/beammp/resources/sim-racing/server:/Server/sim-racing" # makes all sim racing server scripts available
 
     # no touchy touchy
     deploy:
