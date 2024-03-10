@@ -6,7 +6,8 @@ services:
     # Define what you need
     container_name: "beammp.name" # define name of the container
     ports:
-      - "30814:30814"             # Define port - Outside:Inside - You only want to touch the Outside port
+      - 30814:30814             # Define port - Outside:Inside - You only want to touch the Outside port
+      - 30814:30814/udp
     network_mode: bridge
     restart: unless-stopped
     environment:                  # define the server config
