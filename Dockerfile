@@ -1,4 +1,6 @@
 FROM archlinux:base
+RUN pacman -Syu --noconfirm netcat curl wget
+
 
 # IMPORTANT
 # you have to define a lua version that the beammp server has been build with.
@@ -10,15 +12,7 @@ RUN pacman -Syu --noconfirm lua53
 RUN ln -s /usr/lib64/liblua.so.5.3.6 /usr/lib64/liblua5.3.so.0
 
 
-
-RUN pacman -S --noconfirm netcat curl wget
-
 COPY ./beammp /beammp/
 COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-RUN chmod +x /beammp/BeamMP-Server
-
 WORKDIR /beammp
-RUN bash /entrypoint.sh
-STOPSIGNAL SIGKILL
-ENTRYPOINT ["./BeamMP-Server"]
+ENTRYPOINT ["/entrypoint.sh"]
